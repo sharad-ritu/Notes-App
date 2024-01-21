@@ -1,8 +1,70 @@
-*{
-    /* font-family: 'Grape Nuts', cursive; */
+/* *{
+    font-family: 'Grape Nuts', cursive;
     font-family: 'Roboto', sans-serif;
+} */
+
+/* color2: #3161A3
+color3: #7EFAFF */
+:root {
+    --background-color: #EBFFFB;
+    --bs-primary-rgb: #13ABC4;
+    --color1: #7EFAFF;
+    --color2: #3161A3;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--bs-primary-rgb);
+    font-weight: 300;
+    font-size: 1.2rem;
+    background-image: url(../img/noise-bg.png);
 }
 
 #logo {
     font-family: 'Grape Nuts', cursive;
+}
+
+.container-fluid-custom {
+    max-width: 1400px;
+}
+
+.btn {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    border-radius: 1.5rem;
+}
+
+.btn-primary {
+    --bs-btn-color: var(--color2);
+    --bs-btn-bg: var(--color1);
+    --bs-btn-border-color: var(--color2);
+    --bs-btn-hover-color: var(--background-color);
+    --bs-btn-hover-bg: var(--color2);
+    --bs-btn-hover-border-color: var(--color2);
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: var(--color2);
+    --bs-btn-active-bg: var(--color1);
+    --bs-btn-active-border-color: var(--color2);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--color2);
+    --bs-btn-disabled-bg: var(--color1);
+    --bs-btn-disabled-border-color: var(--color2);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--color2);
+    --bs-btn-border-color: var(--color2);
+    --bs-btn-hover-color: var(--background-color);
+    --bs-btn-hover-bg: var(--color2);
+    --bs-btn-hover-border-color: var(--color2);
+    --bs-btn-focus-shadow-rgb: 13,110,253;
+    --bs-btn-active-color: var(--color2);
+    --bs-btn-active-bg: var(--color1);
+    --bs-btn-active-border-color: var(--color2);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: var(--color2);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--color2);
+    --bs-gradient: none;
 }
