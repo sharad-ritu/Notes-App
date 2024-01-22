@@ -68,3 +68,9 @@ body {
     --bs-btn-disabled-border-color: var(--color2);
     --bs-gradient: none;
 }
+
+.pagination {
+    --bs-pagination-color: var(--bs-primary-rgb);
+    --bs-pagination-active-bg: var(--bs-primary-rgb);
+    --bs-pagination-active-border-color: var(--bs-primary-rgb);
+}
