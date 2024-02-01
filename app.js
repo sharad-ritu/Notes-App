@@ -7,6 +7,7 @@ const app = express();
 const port = 3000 || process.env.PORT;
 
 const routes = require('./server/routes/routes');
+const dashboardRoutes = require('./server/routes/dashboard');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -21,6 +22,7 @@ app.set('view engine', 'ejs');
 
 //routes
 app.use('/', routes);
+app.use('/', dashboardRoutes);
 
 //handle 404
 app.get('*', (req, res) => {
