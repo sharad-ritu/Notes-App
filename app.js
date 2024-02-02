@@ -4,12 +4,18 @@ const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const connectDB = require('./server/config/db');
 const session = require('express-session');
+const passport = require('passport');
+const MongoStore = require('connect-mongo');
 
 const app = express();
 const port = 3000 || process.env.PORT;
 
 const routes = require('./server/routes/routes');
 const dashboardRoutes = require('./server/routes/dashboard');
+const auth = require('./server/routes/auth');
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -26,6 +32,7 @@ app.set('layout', './layouts/main');
 app.set('view engine', 'ejs');
 
 //routes
+app.use('/', auth);
 app.use('/', routes);
 app.use('/', dashboardRoutes);
 
