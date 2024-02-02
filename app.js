@@ -10,6 +10,17 @@ const MongoStore = require('connect-mongo');
 const app = express();
 const port = 3000 || process.env.PORT;
 
+app.use(
+  session({
+    secret: '7sD8fG2hJ4kL1pQ9rZ0xY6vA3tE5uB',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+    }),
+  })
+);
+
 const routes = require('./server/routes/routes');
 const dashboardRoutes = require('./server/routes/dashboard');
 const auth = require('./server/routes/auth');
@@ -38,9 +49,9 @@ app.use('/', dashboardRoutes);
 
 //handle 404
 app.get('*', (req, res) => {
-    res.status(404).render('404');
+  res.status(404).render('404');
 });
 
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
+  console.log(`Listening on port ${port}`);
 });
