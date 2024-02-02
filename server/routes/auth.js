@@ -16,7 +16,6 @@ passport.use(new GoogleStrategy({
   }
 ));
 
-
 //google login route
 router.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
