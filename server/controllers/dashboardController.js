@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 exports.dashboard = async (req, res) => {
   let perPage = 12;
   let page = req.query.page || 1;
-  
+  const userId = req.user.id;
+
   const locals = {
     title: 'Dashboard',
     description: 'NodeJs Notes App',
@@ -13,7 +14,7 @@ exports.dashboard = async (req, res) => {
   try {
     const notes = await Note.aggregate([
       { $sort: { updatedAt: -1 } },
-      { $match: { user: req.user.id } },
+      { $match: { user: userId } },
       {
         $project: {
           title: { $substr: ["$title", 0, 30] },
@@ -25,7 +26,7 @@ exports.dashboard = async (req, res) => {
     .limit(perPage)
     .exec(); 
 
-    const count = await Note.countDocuments({ user: req.user.id });
+    const count = await Note.countDocuments();
 
     res.render('dashboard/index', {
       userName: req.user.firstName,
