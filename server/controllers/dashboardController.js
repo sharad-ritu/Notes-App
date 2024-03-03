@@ -31,7 +31,6 @@ exports.dashboard = async (req, res) => {
     ])
     .exec();
     const count = user_notes.length;
-    console.log(count);
 
     res.render('dashboard/index', {
       userName: req.user.firstName,
