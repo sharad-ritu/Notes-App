@@ -26,7 +26,12 @@ exports.dashboard = async (req, res) => {
     .limit(perPage)
     .exec(); 
 
-    const count = await Note.countDocuments();
+    const user_notes = await Note.aggregate([
+      { $match: { user: userId}}
+    ])
+    .exec();
+    const count = user_notes.length;
+    console.log(count);
 
     res.render('dashboard/index', {
       userName: req.user.firstName,
