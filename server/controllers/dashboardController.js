@@ -62,3 +62,22 @@ exports.dashboardViewNote = async (req, res) => {
     res.send("Something went wrong.");
   }
 };
+
+exports.dashboardUpdateNote = async (req, res) => {
+  try {
+    console.log(req.body.title);
+    const updatedNote = await Note.findByIdAndUpdate(
+      req.params.id,
+      { title: req.body.title, body: req.body.body, content: req.body.content },
+      { new: true }
+    );
+
+    if (updatedNote) {
+      res.redirect("/dashboard");
+    }
+    
+
+  } catch (error) {
+    console.log(error);
+  }
+};
