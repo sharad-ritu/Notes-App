@@ -45,3 +45,20 @@ exports.dashboard = async (req, res) => {
   }
 
 };
+
+exports.dashboardViewNote = async (req, res) => {
+
+  const note = await Note.findOne({
+    _id: req.params.id,
+  });
+
+  if (note && (note.user == req.user.id)) {
+    res.render("dashboard/view-note", {
+      noteID: req.params.id,
+      note,
+      layout: "../views/layouts/dashboard",
+    });
+  } else {
+    res.send("Something went wrong.");
+  }
+};
